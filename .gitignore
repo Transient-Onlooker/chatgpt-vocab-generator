@@ -2,3 +2,5 @@ build/bin
 node_modules
 frontend/dist
 api.json
+push.bat
+Tester/
