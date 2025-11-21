@@ -16,7 +16,6 @@ type ChatRequest struct {
 	Model       string    `json:"model"`
 	Messages    []Message `json:"messages"`
 	Temperature float32   `json:"temperature"`
-	Timeout     int       `json:"timeout"`
 }
 
 type Message struct {
@@ -53,7 +52,6 @@ func callChatGPT(apiKey, model, systemPrompt, userPrompt string) (string, error)
 			{Role: "user", Content: userPrompt},
 		},
 		Temperature: 1.0,
-		Timeout:     120,
 	}
 
 	jsonData, err := json.Marshal(reqBody)

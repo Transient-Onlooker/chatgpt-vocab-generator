@@ -1,0 +1,27 @@
+[2025-11-22T00:47:58+09:00] Received message: tea.WindowSizeMsg{Width:120, Height:30}
+[2025-11-22T00:47:58+09:00] Received message: cursor.initialBlinkMsg{}
+[2025-11-22T00:47:58+09:00] Received message: filepicker.readDirMsg{id:1, entries:[]fs.DirEntry{os.dirEntry{fs:(*os.fileStat)(0xc0000e43f0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4380)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4070)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e40e0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4150)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e41c0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4230)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e42a0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4310)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4460)}}}
+[2025-11-22T00:47:58+09:00] Received message: cursor.BlinkMsg{id:0, tag:2}
+[2025-11-22T00:47:59+09:00] Received message: cursor.BlinkMsg{id:0, tag:3}
+[2025-11-22T00:47:59+09:00] Received message: cursor.BlinkMsg{id:0, tag:4}
+[2025-11-22T00:48:00+09:00] Received message: cursor.BlinkMsg{id:0, tag:5}
+[2025-11-22T00:48:00+09:00] Received message: cursor.BlinkMsg{id:0, tag:6}
+[2025-11-22T00:48:01+09:00] Received message: cursor.BlinkMsg{id:0, tag:7}
+[2025-11-22T00:48:01+09:00] Received message: cursor.BlinkMsg{id:0, tag:8}
+[2025-11-22T00:48:02+09:00] Received message: cursor.BlinkMsg{id:0, tag:9}
+[2025-11-22T00:48:03+09:00] Received message: cursor.BlinkMsg{id:0, tag:10}
+[2025-11-22T00:48:03+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{0}, Alt:false, Paste:false}
+[2025-11-22T00:48:03+09:00] Received message: tea.KeyMsg{Type:15, Runes:[]int32(nil), Alt:false, Paste:false}
+Filepicker initiated. Current Directory: 'C:\Users\무조림.000\Desktop\Gemini\10_컴퓨터 프로그램 개발\Go\05_2_단어보붕 생성기(Chatgpt)'
+[2025-11-22T00:48:03+09:00] Received message: filepicker.readDirMsg{id:1, entries:[]fs.DirEntry{os.dirEntry{fs:(*os.fileStat)(0xc0000e4380)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4310)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4070)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e40e0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4150)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e41c0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e4230)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e42a0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000e43f0)}}}
+[2025-11-22T00:48:03+09:00] Received message: cursor.BlinkMsg{id:0, tag:11}
+[2025-11-22T00:48:04+09:00] Received message: tea.KeyMsg{Type:27, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T00:48:06+09:00] Received message: main.resetStatusMsg{}
+[2025-11-22T00:48:07+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T00:48:07+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T00:48:07+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T00:48:08+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T00:48:08+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T00:48:08+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T00:48:08+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T00:48:08+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}

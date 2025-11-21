@@ -36,16 +36,17 @@ type (
 	fileWriteMsg        struct{ path string; err error }
 	generationResultMsg struct{ text string; err error }
 	resetStatusMsg      struct{}
-	debugFileCreatedMsg struct{ err error }
+	debugFileWrittenMsg struct{ err error }
+	tickMsg             struct{}
 	errMsg              struct{ err error }
 )
 
 func (e errMsg) Error() string { return e.err.Error() }
 
-func createDebugFileCmd() tea.Cmd {
+func writeLogBufferCmd(content string) tea.Cmd {
 	return func() tea.Msg {
-		_, err := os.Create("debug.log")
-		return debugFileCreatedMsg{err: err}
+		err := os.WriteFile("debug.log", []byte(content), 0644)
+		return debugFileWrittenMsg{err: err}
 	}
 }
 
@@ -92,13 +93,27 @@ func resetErrorStatusCmd() tea.Cmd {
 	})
 }
 
+func startGenerationTickerCmd() tea.Cmd {
+	return tea.Tick(1*time.Second, func(t time.Time) tea.Msg {
+		return tickMsg{}
+	})
+}
+
+func startGenerationTickerCmd() tea.Cmd {
+	return tea.Tick(1*time.Second, func(t time.Time) tea.Msg {
+		return tickMsg{}
+	})
+}
+
 
 // --- Styles ---
 var (
-	docStyle     = lipgloss.NewStyle().Margin(1, 2)
-	focusedStyle = lipgloss.NewStyle().Border(lipgloss.RoundedBorder()).BorderForeground(lipgloss.Color("62"))
-	blurredStyle = lipgloss.NewStyle().Border(lipgloss.NormalBorder()).BorderForeground(lipgloss.Color("240"))
-	helpStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("241"))
+	docStyle           = lipgloss.NewStyle().Margin(1, 2)
+	focusedStyle       = lipgloss.NewStyle().Border(lipgloss.RoundedBorder()).BorderForeground(lipgloss.Color("62"))
+	blurredStyle       = lipgloss.NewStyle().Border(lipgloss.NormalBorder()).BorderForeground(lipgloss.Color("240"))
+	helpStyle          = lipgloss.NewStyle().Foreground(lipgloss.Color("241"))
+	cursorLineNumberStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("255")) // White
+	lineNumberStyle    = lipgloss.NewStyle().Foreground(lipgloss.Color("240")) // Dark Gray
 )
 
 
@@ -123,12 +138,20 @@ type model struct {
 	apiKey        string
 
 	// Generation Parameters
-	selectedModel string
-	selectedQType string
-	numSentences  string
+	selectedModel     string
+	selectedQType     string
+	numSentences      string
+	generationSeconds int
+
+	// State
+	isGenerating bool
+
+	// State
+	isGenerating bool
 
 	// Hidden Debug
 	oKeyPressCount int
+	logBuffer      strings.Builder
 }
 
 const (
@@ -157,6 +180,13 @@ func initialModel() model {
 	for i := range m.inputs {
 		t := textarea.New()
 		t.ShowLineNumbers = true
+
+		// Set line number styles
+		t.FocusedStyle.LineNumber = lineNumberStyle
+		t.BlurredStyle.LineNumber = lineNumberStyle
+		t.FocusedStyle.CursorLineNumber = cursorLineNumberStyle
+		t.BlurredStyle.CursorLineNumber = cursorLineNumberStyle
+
 		t.FocusedStyle.Base = focusedStyle
 		t.BlurredStyle.Base = blurredStyle
 		if i == inputIdx {
@@ -183,36 +213,30 @@ m.numInput = textinput.New()
 	m.list = list.New([]list.Item{}, list.NewDefaultDelegate(), 0, 0)
 	m.list.SetShowHelp(false)
 
-		// Filepicker
-
 		fp := filepicker.New()
-
-		fp.AllowedTypes = []string{".txt"}
-
-		ex, err := os.Executable()
-
+		// fp.AllowedTypes = []string{".txt"} // Temporarily disabled for debugging
+		wd, err := os.Getwd()
 		if err != nil {
-
-			// Fallback to current directory on error
-
-			ex, _ = filepath.Abs(".")
-
+			// Fallback to root on error
+			fp.CurrentDirectory = "/"
+		} else {
+			fp.CurrentDirectory = wd
 		}
-
-		fp.CurrentDirectory = filepath.Dir(ex)
-
 		m.filepicker = fp
 
 	return m
 }
 
-func (m model) Init() tea.Cmd {
+func (m *model) Init() tea.Cmd {
 	return tea.Batch(textarea.Blink, m.filepicker.Init())
 }
 
 // --- Update ---
 
-func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+	// Log every message received for retroactive debugging
+	m.logBuffer.WriteString(fmt.Sprintf("[%s] Received message: %#v\n", time.Now().Format(time.RFC3339), msg))
+
 	var cmds []tea.Cmd
 
 	switch msg := msg.(type) {
@@ -260,6 +284,14 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			return updateDefault(msg, m)
 		}
 
+	case tickMsg:
+		if m.isGenerating {
+			m.generationSeconds++
+			m.status = fmt.Sprintf("Generating... (%ds)", m.generationSeconds)
+			return m, startGenerationTickerCmd() // Continue ticking
+		}
+		return m, nil // Stop ticking
+
 	case resetStatusMsg:
 		m.status = m.defaultStatus
 		return m, nil
@@ -277,6 +309,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, resetSuccessStatusCmd()
 
 	case generationResultMsg:
+		m.isGenerating = false
 		if msg.err != nil {
 			m.status = fmt.Sprintf("Generation Error: %v", msg.err)
 			return m, resetErrorStatusCmd()
@@ -287,12 +320,12 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.state = stateDefault
 		return m, resetSuccessStatusCmd()
 
-	case debugFileCreatedMsg:
+	case debugFileWrittenMsg:
 		if msg.err != nil {
-			m.status = fmt.Sprintf("Error creating debug.log: %v", msg.err)
+			m.status = fmt.Sprintf("Error writing debug.log: %v", msg.err)
 			return m, resetErrorStatusCmd()
 		} else {
-			m.status = "debug.log created. Logging will not be active until app restart."
+			m.status = "debug.log written successfully."
 		}
 		return m, resetSuccessStatusCmd()
 
@@ -311,7 +344,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	return m, tea.Batch(cmds...)
 }
 
-func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
+func updateDefault(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 	// Reset counter if any key other than 'o' is pressed.
 	if msg.String() != "o" {
 		m.oKeyPressCount = 0
@@ -321,6 +354,7 @@ func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	case "ctrl+o":
 		m.state = stateFilePicker
 		m.status = "Select a file to load."
+		m.logBuffer.WriteString(fmt.Sprintf("Filepicker initiated. Current Directory: '%s'\n", m.filepicker.CurrentDirectory))
 		return m, m.filepicker.Init()
 
 	case "ctrl+s":
@@ -358,7 +392,7 @@ func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 		m.oKeyPressCount++
 		if m.oKeyPressCount >= 5 {
 			m.oKeyPressCount = 0 // Reset
-			return m, createDebugFileCmd()
+			return m, writeLogBufferCmd(m.logBuffer.String())
 		}
 	}
 
@@ -367,7 +401,7 @@ func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-func updatePathInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
+func updatePathInput(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	switch msg.String() {
 	case "enter":
@@ -385,9 +419,15 @@ func updatePathInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-func updateListSelection(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
+func updateListSelection(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	switch msg.String() {
+	case "w":
+		m.list.CursorUp()
+		return m, nil
+	case "s":
+		m.list.CursorDown()
+		return m, nil
 	case "enter":
 		item := m.list.SelectedItem().(item)
 		if m.state == stateSelectModel {
@@ -407,14 +447,17 @@ func updateListSelection(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 				m.status = "Enter number of sentences."
 			} else {
 				m.state = stateDefault
+				m.isGenerating = true
+				m.generationSeconds = 0
 				m.status = "Generating..."
 				parsed := parseVocabBlock(m.inputs[inputIdx].Value())
 				system, user := buildPrompts(parsed, m.selectedQType, 1)
-				return m, generateCmd(m.apiKey, m.selectedModel, system, user)
+				return m, tea.Batch(generateCmd(m.apiKey, m.selectedModel, system, user), startGenerationTickerCmd())
 			}
 		}
 		return m, nil
 	case "esc":
+		m.isGenerating = false
 		m.state = stateDefault
 		m.status = "Cancelled generation."
 		return m, resetSuccessStatusCmd()
@@ -423,18 +466,21 @@ func updateListSelection(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	return m, cmd
 }
 
-func updateNumInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
+func updateNumInput(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	switch msg.String() {
 	case "enter":
 		m.numSentences = m.numInput.Value()
 		m.state = stateDefault
+		m.isGenerating = true
+		m.generationSeconds = 0
 		m.status = "Generating..."
 		num, _ := strconv.Atoi(m.numSentences)
 		parsed := parseVocabBlock(m.inputs[inputIdx].Value())
 		system, user := buildPrompts(parsed, m.selectedQType, num)
-		return m, generateCmd(m.apiKey, m.selectedModel, system, user)
+		return m, tea.Batch(generateCmd(m.apiKey, m.selectedModel, system, user), startGenerationTickerCmd())
 	case "esc":
+		m.isGenerating = false
 		m.state = stateDefault
 		m.status = "Cancelled generation."
 		return m, resetSuccessStatusCmd()
@@ -445,7 +491,7 @@ func updateNumInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 
 // --- View ---
 
-func (m model) View() string {
+func (m *model) View() string {
 	if m.err != nil {
 		return fmt.Sprintf("\nError: %v\n\nPress ctrl+c to exit.", m.err)
 	}
