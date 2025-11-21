@@ -205,7 +205,7 @@ m.numInput = textinput.New()
 	m.list.SetShowHelp(false)
 
 		fp := filepicker.New()
-		// fp.AllowedTypes = []string{".txt"} // Temporarily disabled for debugging
+		fp.AllowedTypes = []string{".txt"}
 		wd, err := os.Getwd()
 		if err != nil {
 			// Fallback to root on error
@@ -346,7 +346,7 @@ func updateDefault(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 		m.state = stateFilePicker
 		m.status = "Select a file to load."
 		m.logBuffer.WriteString(fmt.Sprintf("Filepicker initiated. Current Directory: '%s'\n", m.filepicker.CurrentDirectory))
-		return m, m.filepicker.Init()
+		return m, tea.Batch(m.filepicker.Init(), tea.EnterAltScreen)
 
 	case "ctrl+s":
 		m.state = stateSaveFilepath
