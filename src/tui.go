@@ -99,12 +99,6 @@ func startGenerationTickerCmd() tea.Cmd {
 	})
 }
 
-func startGenerationTickerCmd() tea.Cmd {
-	return tea.Tick(1*time.Second, func(t time.Time) tea.Msg {
-		return tickMsg{}
-	})
-}
-
 
 // --- Styles ---
 var (
@@ -142,9 +136,6 @@ type model struct {
 	selectedQType     string
 	numSentences      string
 	generationSeconds int
-
-	// State
-	isGenerating bool
 
 	// State
 	isGenerating bool
