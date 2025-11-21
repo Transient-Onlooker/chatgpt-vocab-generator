@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -35,10 +36,18 @@ type (
 	fileWriteMsg        struct{ path string; err error }
 	generationResultMsg struct{ text string; err error }
 	resetStatusMsg      struct{}
+	debugFileCreatedMsg struct{ err error }
 	errMsg              struct{ err error }
 )
 
 func (e errMsg) Error() string { return e.err.Error() }
+
+func createDebugFileCmd() tea.Cmd {
+	return func() tea.Msg {
+		_, err := os.Create("debug.log")
+		return debugFileCreatedMsg{err: err}
+	}
+}
 
 // --- Commands ---
 
@@ -71,8 +80,14 @@ func generateCmd(apiKey, modelID, systemPrompt, userPrompt string) tea.Cmd {
 	}
 }
 
-func resetStatusCmd() tea.Cmd {
+func resetSuccessStatusCmd() tea.Cmd {
 	return tea.Tick(2*time.Second, func(t time.Time) tea.Msg {
+		return resetStatusMsg{}
+	})
+}
+
+func resetErrorStatusCmd() tea.Cmd {
+	return tea.Tick(4*time.Second, func(t time.Time) tea.Msg {
 		return resetStatusMsg{}
 	})
 }
@@ -111,6 +126,9 @@ type model struct {
 	selectedModel string
 	selectedQType string
 	numSentences  string
+
+	// Hidden Debug
+	oKeyPressCount int
 }
 
 const (
@@ -165,11 +183,25 @@ m.numInput = textinput.New()
 	m.list = list.New([]list.Item{}, list.NewDefaultDelegate(), 0, 0)
 	m.list.SetShowHelp(false)
 
-	// Filepicker
-	fp := filepicker.New()
-	fp.AllowedTypes = []string{ ".txt"}
-	fp.CurrentDirectory, _ = filepath.Abs("./Tester") // Start in the Tester directory
-	m.filepicker = fp
+		// Filepicker
+
+		fp := filepicker.New()
+
+		fp.AllowedTypes = []string{".txt"}
+
+		ex, err := os.Executable()
+
+		if err != nil {
+
+			// Fallback to current directory on error
+
+			ex, _ = filepath.Abs(".")
+
+		}
+
+		fp.CurrentDirectory = filepath.Dir(ex)
+
+		m.filepicker = fp
 
 	return m
 }
@@ -209,7 +241,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			if msg.String() == "esc" {
 				m.state = stateDefault
 				m.status = "File selection cancelled."
-				return m, resetStatusCmd()
+				return m, resetSuccessStatusCmd()
 			}
 			var cmd tea.Cmd
 			m.filepicker, cmd = m.filepicker.Update(msg)
@@ -237,22 +269,32 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.inputFilePath = msg.path
 		m.status = fmt.Sprintf("Loaded '%s'", filepath.Base(msg.path))
 		m.state = stateDefault
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
 
 	case fileWriteMsg:
 		m.status = fmt.Sprintf("Saved to '%s'", filepath.Base(msg.path))
 		m.state = stateDefault
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
 
 	case generationResultMsg:
 		if msg.err != nil {
 			m.status = fmt.Sprintf("Generation Error: %v", msg.err)
+			return m, resetErrorStatusCmd()
 		} else {
 			m.status = "Generation complete!"
 			m.inputs[outputIdx].SetValue(msg.text)
 		}
 		m.state = stateDefault
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
+
+	case debugFileCreatedMsg:
+		if msg.err != nil {
+			m.status = fmt.Sprintf("Error creating debug.log: %v", msg.err)
+			return m, resetErrorStatusCmd()
+		} else {
+			m.status = "debug.log created. Logging will not be active until app restart."
+		}
+		return m, resetSuccessStatusCmd()
 
 	case errMsg:
 		m.err = msg.err
@@ -270,6 +312,11 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
+	// Reset counter if any key other than 'o' is pressed.
+	if msg.String() != "o" {
+		m.oKeyPressCount = 0
+	}
+
 	switch msg.String() {
 	case "ctrl+o":
 		m.state = stateFilePicker
@@ -290,11 +337,11 @@ func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	case "ctrl+g":
 		if m.inputs[inputIdx].Value() == "" {
 			m.status = "Cannot generate: Input vocabulary is empty."
-			return m, resetStatusCmd()
+			return m, resetErrorStatusCmd()
 		}
 		if m.apiKey == "" {
 			m.status = "Cannot generate: API Key is not configured in api.json."
-			return m, resetStatusCmd()
+			return m, resetErrorStatusCmd()
 		}
 		m.state = stateSelectModel
 		m.list.Title = "Select a Model"
@@ -306,7 +353,15 @@ func updateDefault(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 		m.focused = (m.focused + 1) % len(m.inputs)
 		m.inputs[m.focused].Focus()
 		return m, textarea.Blink
+
+	case "o":
+		m.oKeyPressCount++
+		if m.oKeyPressCount >= 5 {
+			m.oKeyPressCount = 0 // Reset
+			return m, createDebugFileCmd()
+		}
 	}
+
 	var cmd tea.Cmd
 	m.inputs[m.focused], cmd = m.inputs[m.focused].Update(msg)
 	return m, cmd
@@ -324,7 +379,7 @@ func updatePathInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	case "esc":
 		m.state = stateDefault
 		m.status = "Cancelled save."
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
 	}
 	m.pathInput, cmd = m.pathInput.Update(msg)
 	return m, cmd
@@ -362,7 +417,7 @@ func updateListSelection(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	case "esc":
 		m.state = stateDefault
 		m.status = "Cancelled generation."
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
 	}
 	m.list, cmd = m.list.Update(msg)
 	return m, cmd
@@ -382,7 +437,7 @@ func updateNumInput(msg tea.KeyMsg, m model) (tea.Model, tea.Cmd) {
 	case "esc":
 		m.state = stateDefault
 		m.status = "Cancelled generation."
-		return m, resetStatusCmd()
+		return m, resetSuccessStatusCmd()
 	}
 	m.numInput, cmd = m.numInput.Update(msg)
 	return m, cmd
