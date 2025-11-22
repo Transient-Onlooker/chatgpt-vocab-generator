@@ -143,6 +143,10 @@ type model struct {
 	// Hidden Debug
 	oKeyPressCount int
 	logBuffer      strings.Builder
+
+	// Undo/Redo History
+	undoHistory [2][]string
+	redoHistory [2][]string
 }
 
 const (
@@ -219,7 +223,7 @@ m.numInput = textinput.New()
 }
 
 func (m *model) Init() tea.Cmd {
-	return tea.Batch(textarea.Blink, m.filepicker.Init())
+	return tea.Batch(textarea.Blink, m.filepicker.Init(), func() tea.Msg { return tea.EnableMouseCellMotion() })
 }
 
 // --- Update ---
@@ -244,6 +248,22 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.list.SetSize(listWidth, panelHeight)
 		m.filepicker.Height = panelHeight
 		return m, nil
+
+	case tea.MouseMsg:
+		if m.state == stateDefault {
+			if msg.Type == tea.MouseWheelUp {
+				for i := 0; i < 1; i++ {
+					m.inputs[m.focused].CursorUp()
+				}
+				return m, nil
+			}
+			if msg.Type == tea.MouseWheelDown {
+				for i := 0; i < 1; i++ {
+					m.inputs[m.focused].CursorDown()
+				}
+				return m, nil
+			}
+		}
 
 	case tea.KeyMsg:
 		if msg.String() == "ctrl+c" {
@@ -341,12 +361,38 @@ func updateDefault(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 		m.oKeyPressCount = 0
 	}
 
+	oldValue := m.inputs[m.focused].Value()
+
 	switch msg.String() {
+	case "ctrl+z":
+		if len(m.undoHistory[m.focused]) > 0 {
+			lastState := m.undoHistory[m.focused][len(m.undoHistory[m.focused])-1]
+			m.undoHistory[m.focused] = m.undoHistory[m.focused][:len(m.undoHistory[m.focused])-1]
+			m.redoHistory[m.focused] = append(m.redoHistory[m.focused], oldValue)
+			m.inputs[m.focused].SetValue(lastState)
+		}
+		return m, nil
+	case "ctrl+y":
+		if len(m.redoHistory[m.focused]) > 0 {
+			lastState := m.redoHistory[m.focused][len(m.redoHistory[m.focused])-1]
+			m.redoHistory[m.focused] = m.redoHistory[m.focused][:len(m.redoHistory[m.focused])-1]
+			m.undoHistory[m.focused] = append(m.undoHistory[m.focused], oldValue)
+			m.inputs[m.focused].SetValue(lastState)
+		}
+		return m, nil
 	case "ctrl+o":
-		m.state = stateFilePicker
-		m.status = "Select a file to load."
-		m.logBuffer.WriteString(fmt.Sprintf("Filepicker initiated. Current Directory: '%s'\n", m.filepicker.CurrentDirectory))
-		return m, tea.Batch(m.filepicker.Init(), tea.EnterAltScreen)
+		// 임시 해결책: word.txt 직접 로드
+		filePath := "word.txt" // word.txt가 현재 작업 디렉토리에 있다고 가정
+		content, err := os.ReadFile(filePath)
+		if err != nil {
+			m.status = fmt.Sprintf("Error loading word.txt: %v", err)
+			return m, nil
+		}
+		m.inputFilePath = filePath // Use m.inputFilePath
+		m.inputs[inputIdx].SetValue(string(content)) // Use m.inputs[inputIdx]
+		m.state = stateDefault // 로드 후 기본 상태로 돌아감
+		m.status = fmt.Sprintf("Loaded: %s", filePath)
+		return m, resetSuccessStatusCmd()
 
 	case "ctrl+s":
 		m.state = stateSaveFilepath
@@ -389,6 +435,13 @@ func updateDefault(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 
 	var cmd tea.Cmd
 	m.inputs[m.focused], cmd = m.inputs[m.focused].Update(msg)
+	newValue := m.inputs[m.focused].Value()
+
+	if newValue != oldValue {
+		m.undoHistory[m.focused] = append(m.undoHistory[m.focused], oldValue)
+		m.redoHistory[m.focused] = nil // Clear redo history on new action
+	}
+
 	return m, cmd
 }
 
@@ -413,10 +466,10 @@ func updatePathInput(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 func updateListSelection(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 	var cmd tea.Cmd
 	switch msg.String() {
-	case "w":
+	case "w", "ㅈ":
 		m.list.CursorUp()
 		return m, nil
-	case "s":
+	case "s", "ㄴ":
 		m.list.CursorDown()
 		return m, nil
 	case "enter":
@@ -497,8 +550,20 @@ func (m *model) View() string {
 	case stateEnterSentences:
 		return docStyle.Render(fmt.Sprintf("Enter number of sentences:\n\n%s", m.numInput.View()) + "\n\nEnter: confirm | Esc: cancel")
 	default:
+		var topContent string
+		if m.inputFilePath != "" {
+			topContent = fmt.Sprintf("Loaded File: %s", filepath.Base(m.inputFilePath))
+		}
+
 		panels := lipgloss.JoinHorizontal(lipgloss.Top, m.inputs[inputIdx].View(), m.inputs[outputIdx].View())
-		return docStyle.Render(lipgloss.JoinVertical(lipgloss.Left, panels, helpStyle.Render(m.status)))
+		
+		contentStack := []string{}
+		if topContent != "" {
+			contentStack = append(contentStack, topContent)
+		}
+		contentStack = append(contentStack, panels, helpStyle.Render(m.status))
+
+		return docStyle.Render(lipgloss.JoinVertical(lipgloss.Left, contentStack...))
 	}
 }
 
