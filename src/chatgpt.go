@@ -16,6 +16,7 @@ type ChatRequest struct {
 	Model       string    `json:"model"`
 	Messages    []Message `json:"messages"`
 	Temperature float32   `json:"temperature"`
+	MaxCompletionTokens   int       `json:"max_completion_tokens,omitempty"`
 }
 
 type Message struct {
@@ -52,6 +53,7 @@ func callChatGPT(apiKey, model, systemPrompt, userPrompt string) (string, error)
 			{Role: "user", Content: userPrompt},
 		},
 		Temperature: 1.0,
+		MaxCompletionTokens:   8192,
 	}
 
 	jsonData, err := json.Marshal(reqBody)

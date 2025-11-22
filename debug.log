@@ -1,63 +1,348 @@
-[2025-11-22T14:06:16+09:00] Received message: tea.WindowSizeMsg{Width:120, Height:30}
-[2025-11-22T14:06:16+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:16+09:00] Received message: filepicker.readDirMsg{id:1, entries:[]fs.DirEntry{os.dirEntry{fs:(*os.fileStat)(0xc000138380)}, os.dirEntry{fs:(*os.fileStat)(0xc0001380e0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138150)}, os.dirEntry{fs:(*os.fileStat)(0xc0001381c0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138230)}, os.dirEntry{fs:(*os.fileStat)(0xc0001382a0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138310)}, os.dirEntry{fs:(*os.fileStat)(0xc0001383f0)}}}
-[2025-11-22T14:06:17+09:00] Received message: cursor.BlinkMsg{id:0, tag:2}
-[2025-11-22T14:06:17+09:00] Received message: cursor.BlinkMsg{id:0, tag:3}
-[2025-11-22T14:06:18+09:00] Received message: cursor.BlinkMsg{id:0, tag:4}
-[2025-11-22T14:06:18+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:18+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:19+09:00] Received message: cursor.BlinkMsg{id:0, tag:5}
-[2025-11-22T14:06:19+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:19+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:19+09:00] Received message: cursor.BlinkMsg{id:0, tag:2}
-[2025-11-22T14:06:19+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:19+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:19+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:19+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:19+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:19+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:19+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:19+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:20+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:20+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:20+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:20+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:20+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:20+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:20+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:20+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:20+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:20+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:20+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:20+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:20+09:00] Received message: tea.KeyMsg{Type:9, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:20+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:20+09:00] Received message: cursor.initialBlinkMsg{}
-[2025-11-22T14:06:21+09:00] Received message: cursor.BlinkMsg{id:0, tag:10}
-[2025-11-22T14:06:21+09:00] Received message: cursor.BlinkMsg{id:0, tag:15}
-[2025-11-22T14:06:21+09:00] Received message: cursor.BlinkMsg{id:0, tag:16}
-[2025-11-22T14:06:22+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{12593}, Alt:false, Paste:false}
-[2025-11-22T14:06:22+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{32}, Alt:false, Paste:false}
-[2025-11-22T14:06:22+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:22+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:22+09:00] Received message: tea.KeyMsg{Type:127, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:22+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:22+09:00] Received message: tea.KeyMsg{Type:127, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:22+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:23+09:00] Received message: cursor.BlinkMsg{id:0, tag:21}
-[2025-11-22T14:06:23+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{0}, Alt:false, Paste:false}
-[2025-11-22T14:06:23+09:00] Received message: tea.KeyMsg{Type:15, Runes:[]int32(nil), Alt:false, Paste:false}
-Filepicker initiated. Current Directory: 'C:\Users\무조림.000\Desktop\Gemini\10_컴퓨터 프로그램 개발\Go\05_2_단어보붕 생성기(Chatgpt)'
-[2025-11-22T14:06:23+09:00] Received message: tea.enterAltScreenMsg{}
-[2025-11-22T14:06:23+09:00] Received message: filepicker.readDirMsg{id:1, entries:[]fs.DirEntry{os.dirEntry{fs:(*os.fileStat)(0xc0001384d0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138230)}, os.dirEntry{fs:(*os.fileStat)(0xc0001382a0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138310)}, os.dirEntry{fs:(*os.fileStat)(0xc000138380)}, os.dirEntry{fs:(*os.fileStat)(0xc0001383f0)}, os.dirEntry{fs:(*os.fileStat)(0xc000138460)}, os.dirEntry{fs:(*os.fileStat)(0xc000138540)}}}
-[2025-11-22T14:06:23+09:00] Received message: cursor.BlinkMsg{id:0, tag:22}
-[2025-11-22T14:06:23+09:00] Received message: tea.WindowSizeMsg{Width:120, Height:30}
-[2025-11-22T14:06:24+09:00] Received message: tea.KeyMsg{Type:27, Runes:[]int32(nil), Alt:false, Paste:false}
-[2025-11-22T14:06:25+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
-[2025-11-22T14:06:25+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
-[2025-11-22T14:06:25+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:25+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
-[2025-11-22T14:06:25+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:25+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
-[2025-11-22T14:06:25+09:00] Received message: cursor.blinkCanceled{}
-[2025-11-22T14:06:26+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T14:58:51+09:00] Received message: tea.enableMouseCellMotionMsg{}
+[2025-11-22T14:58:51+09:00] Received message: cursor.initialBlinkMsg{}
+[2025-11-22T14:58:51+09:00] Received message: tea.WindowSizeMsg{Width:120, Height:30}
+[2025-11-22T14:58:51+09:00] Received message: filepicker.readDirMsg{id:1, entries:[]fs.DirEntry{os.dirEntry{fs:(*os.fileStat)(0xc0000a23f0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a20e0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2150)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a21c0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2230)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a22a0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2310)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2380)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2460)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a24d0)}, os.dirEntry{fs:(*os.fileStat)(0xc0000a2540)}}}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:109, Y:24, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:110, Y:23, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:109, Y:22, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:108, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:107, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:106, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:105, Y:14, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:103, Y:12, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:101, Y:10, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:100, Y:9, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:99, Y:8, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:97, Y:7, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:97, Y:6, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:96, Y:6, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:96, Y:5, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:96, Y:4, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:96, Y:3, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:97, Y:3, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: cursor.BlinkMsg{id:0, tag:2}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:98, Y:2, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:99, Y:2, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:100, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:101, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:101, Y:0, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:99, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:97, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:95, Y:3, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:92, Y:4, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:91, Y:5, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:87, Y:7, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:83, Y:9, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:80, Y:11, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:78, Y:12, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:75, Y:13, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:73, Y:14, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:71, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:69, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:67, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:66, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:52+09:00] Received message: tea.MouseMsg{X:65, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:58:53+09:00] Received message: cursor.BlinkMsg{id:0, tag:3}
+[2025-11-22T14:58:53+09:00] Received message: tea.MouseMsg{X:65, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:1, Type:1}
+[2025-11-22T14:58:53+09:00] Received message: tea.MouseMsg{X:65, Y:18, Shift:false, Alt:false, Ctrl:false, Action:1, Button:1, Type:1}
+[2025-11-22T14:58:53+09:00] Received message: cursor.BlinkMsg{id:0, tag:4}
+[2025-11-22T14:58:53+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{0}, Alt:false, Paste:false}
+[2025-11-22T14:58:53+09:00] Received message: tea.KeyMsg{Type:15, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:58:54+09:00] Received message: cursor.BlinkMsg{id:0, tag:5}
+[2025-11-22T14:58:54+09:00] Received message: cursor.BlinkMsg{id:0, tag:6}
+[2025-11-22T14:58:54+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{0}, Alt:false, Paste:false}
+[2025-11-22T14:58:55+09:00] Received message: tea.KeyMsg{Type:7, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:58:55+09:00] Received message: cursor.BlinkMsg{id:0, tag:7}
+[2025-11-22T14:58:55+09:00] Received message: main.resetStatusMsg{}
+[2025-11-22T14:58:56+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{115}, Alt:false, Paste:false}
+[2025-11-22T14:58:56+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{115}, Alt:false, Paste:false}
+[2025-11-22T14:58:57+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{122}, Alt:false, Paste:false}
+[2025-11-22T14:58:57+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{115}, Alt:false, Paste:false}
+[2025-11-22T14:58:57+09:00] Received message: tea.KeyMsg{Type:13, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:58:58+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{119}, Alt:false, Paste:false}
+[2025-11-22T14:58:58+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{119}, Alt:false, Paste:false}
+[2025-11-22T14:58:58+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{119}, Alt:false, Paste:false}
+[2025-11-22T14:58:59+09:00] Received message: tea.KeyMsg{Type:13, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:59:00+09:00] Received message: tea.KeyMsg{Type:127, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:59:00+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{49}, Alt:false, Paste:false}
+[2025-11-22T14:59:00+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T14:59:00+09:00] Received message: tea.KeyMsg{Type:13, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T14:59:00+09:00] Received message: cursor.BlinkMsg{id:0, tag:3}
+[2025-11-22T14:59:01+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:64, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:63, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:62, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:61, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:60, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:60, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:61, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:61, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:62, Y:14, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:63, Y:13, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:64, Y:11, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:66, Y:9, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:67, Y:8, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:68, Y:6, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:69, Y:5, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:70, Y:4, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:71, Y:3, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:72, Y:2, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:72, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:73, Y:0, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:02+09:00] Received message: tea.MouseMsg{X:74, Y:0, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:03+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:04+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:05+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:77, Y:0, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:78, Y:0, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:80, Y:1, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:81, Y:3, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:83, Y:4, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:86, Y:6, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:89, Y:7, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:92, Y:9, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:94, Y:10, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:97, Y:11, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:98, Y:12, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:100, Y:13, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:101, Y:13, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:102, Y:14, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:103, Y:14, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:105, Y:15, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:108, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:110, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:112, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:113, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:115, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:116, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:117, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:118, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:119, Y:21, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:06+09:00] Received message: tea.MouseMsg{X:119, Y:22, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:07+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:08+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:09+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:10+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:11+09:00] Received message: tea.MouseMsg{X:48, Y:21, Shift:false, Alt:false, Ctrl:false, Action:0, Button:1, Type:1}
+[2025-11-22T14:59:11+09:00] Received message: tea.MouseMsg{X:48, Y:21, Shift:false, Alt:false, Ctrl:false, Action:1, Button:1, Type:1}
+[2025-11-22T14:59:11+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:12+09:00] Received message: tea.MouseMsg{X:48, Y:21, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:12+09:00] Received message: tea.MouseMsg{X:49, Y:21, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:12+09:00] Received message: tea.MouseMsg{X:50, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T14:59:12+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:13+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:14+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:15+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:16+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:17+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:18+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:19+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:20+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:21+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:22+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:23+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:24+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:25+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:26+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:27+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:28+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:29+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:30+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:31+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:32+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:33+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:34+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:35+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:36+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:37+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:38+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:39+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:40+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:41+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:42+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:43+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:44+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:45+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:46+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:47+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:48+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:49+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:50+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:51+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:52+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:53+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:54+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:55+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:56+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:57+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:58+09:00] Received message: main.tickMsg{}
+[2025-11-22T14:59:59+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:00+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:01+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:02+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:03+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:04+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:05+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:06+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:07+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:08+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:09+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:10+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:11+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:12+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:13+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:14+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:15+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:16+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:17+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:18+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:19+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:20+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:21+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:22+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:23+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:24+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:25+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:26+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:27+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:28+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:29+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:30+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:31+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:32+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:33+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:34+09:00] Received message: generationResultMsg with ERROR: API가 비어있는 응답을 반환했습니다
+[2025-11-22T15:00:34+09:00] Received message: main.tickMsg{}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:49, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:47, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:42, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:37, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:35, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:34, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:33, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:31, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:36+09:00] Received message: tea.MouseMsg{X:30, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:28, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:26, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:24, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:22, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:21, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:20, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:20, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:21, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:24, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:27, Y:21, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:29, Y:22, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:30, Y:22, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:30, Y:23, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:30, Y:24, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:29, Y:25, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:28, Y:25, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:27, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:25, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:22, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:19, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:15, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:12, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:9, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:7, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:6, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:5, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:4, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:5, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:7, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:10, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:13, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:16, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:16, Y:25, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:15, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:13, Y:26, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:12, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:10, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:8, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:6, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:37+09:00] Received message: tea.MouseMsg{X:5, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:4, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: main.resetStatusMsg{}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:3, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:3, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:2, Y:27, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:2, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:1, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:38+09:00] Received message: tea.MouseMsg{X:2, Y:28, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:00:40+09:00] Received message: tea.KeyMsg{Type:-45, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T15:00:40+09:00] Received message: tea.disableMouseMsg{}
+[2025-11-22T15:00:42+09:00] Received message: main.resetStatusMsg{}
+[2025-11-22T15:01:09+09:00] Received message: tea.KeyMsg{Type:-45, Runes:[]int32(nil), Alt:false, Paste:false}
+[2025-11-22T15:01:09+09:00] Received message: tea.enableMouseCellMotionMsg{}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:32, Y:20, Shift:false, Alt:false, Ctrl:false, Action:0, Button:4, Type:5}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:32, Y:20, Shift:false, Alt:false, Ctrl:false, Action:0, Button:4, Type:5}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:32, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:33, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:34, Y:20, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:36, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:39, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:41, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:44, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:48, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:53, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:55, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:55, Y:17, Shift:false, Alt:false, Ctrl:false, Action:0, Button:4, Type:5}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:58, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:61, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:62, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:63, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:65, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:65, Y:17, Shift:false, Alt:false, Ctrl:false, Action:0, Button:4, Type:5}
+[2025-11-22T15:01:10+09:00] Received message: tea.MouseMsg{X:66, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:67, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:67, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:66, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:63, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:59, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:53, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:49, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:45, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:18, Shift:false, Alt:false, Ctrl:false, Action:0, Button:5, Type:6}
+[2025-11-22T15:01:11+09:00] Received message: tea.MouseMsg{X:44, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:11+09:00] Received message: main.resetStatusMsg{}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:43, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:42, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:40, Y:19, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:36, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:31, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:25, Y:18, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:20, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:15, Y:17, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:11, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:9, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:8, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:6, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:5, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:4, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:3, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:2, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:1, Y:16, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:1, Y:15, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:13+09:00] Received message: tea.MouseMsg{X:0, Y:15, Shift:false, Alt:false, Ctrl:false, Action:2, Button:0, Type:11}
+[2025-11-22T15:01:16+09:00] Received message: tea.MouseMsg{X:89, Y:27, Shift:false, Alt:false, Ctrl:false, Action:0, Button:1, Type:1}
+[2025-11-22T15:01:16+09:00] Received message: tea.MouseMsg{X:89, Y:27, Shift:false, Alt:false, Ctrl:false, Action:1, Button:1, Type:1}
+[2025-11-22T15:01:17+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T15:01:17+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T15:01:17+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T15:01:18+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T15:01:18+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T15:01:18+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}
+[2025-11-22T15:01:18+09:00] Received message: cursor.blinkCanceled{}
+[2025-11-22T15:01:18+09:00] Received message: tea.KeyMsg{Type:-1, Runes:[]int32{111}, Alt:false, Paste:false}

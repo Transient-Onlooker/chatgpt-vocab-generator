@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"strconv"
@@ -139,6 +140,7 @@ type model struct {
 
 	// State
 	isGenerating bool
+	mouseEnabled      bool
 
 	// Hidden Debug
 	oKeyPressCount int
@@ -160,7 +162,7 @@ func initialModel() model {
 		log.Printf("Failed to load API key: %v", err)
 	}
 
-	defaultStatus := "Ctrl+O: Load | Ctrl+S: Save | Ctrl+G: Generate | Tab: Switch Panes"
+	defaultStatus := "F12: Toggle Mouse | Ctrl+O: Load | Ctrl+S: Save | Ctrl+G: Generate | Tab: Switch Panes"
 	m := model{
 		state:         stateDefault,
 		status:        defaultStatus,
@@ -169,6 +171,7 @@ func initialModel() model {
 		focused:       0,
 		apiKey:        apiKey,
 		numSentences:  "2",
+		mouseEnabled:  true,
 	}
 
 	// Textareas
@@ -229,8 +232,17 @@ func (m *model) Init() tea.Cmd {
 // --- Update ---
 
 func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	// Log every message received for retroactive debugging
-	m.logBuffer.WriteString(fmt.Sprintf("[%s] Received message: %#v\n", time.Now().Format(time.RFC3339), msg))
+	// Log every message
+	switch msg := msg.(type) {
+	case generationResultMsg:
+		if msg.err != nil {
+			m.logBuffer.WriteString(fmt.Sprintf("[%s] Received message: generationResultMsg with ERROR: %s\n", time.Now().Format(time.RFC3339), msg.err.Error()))
+		} else {
+			m.logBuffer.WriteString(fmt.Sprintf("[%s] Received message: generationResultMsg with text\n", time.Now().Format(time.RFC3339)))
+		}
+	default:
+		m.logBuffer.WriteString(fmt.Sprintf("[%s] Received message: %#v\n", time.Now().Format(time.RFC3339), msg))
+	}
 
 	var cmds []tea.Cmd
 
@@ -250,7 +262,7 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		return m, nil
 
 	case tea.MouseMsg:
-		if m.state == stateDefault {
+		if m.mouseEnabled && m.state == stateDefault {
 			if msg.Type == tea.MouseWheelUp {
 				for i := 0; i < 1; i++ {
 					m.inputs[m.focused].CursorUp()
@@ -266,7 +278,17 @@ func (m *model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 
 	case tea.KeyMsg:
-		if msg.String() == "ctrl+c" {
+		switch msg.String() {
+		case "f12":
+			m.mouseEnabled = !m.mouseEnabled
+			if m.mouseEnabled {
+				m.status = "Mouse support enabled."
+				return m, tea.Batch(resetSuccessStatusCmd(), func() tea.Msg { return tea.EnableMouseCellMotion() })
+			} else {
+				m.status = "Mouse support disabled (text selection enabled)."
+				return m, tea.Batch(resetSuccessStatusCmd(), tea.DisableMouse)
+			}
+		case "ctrl+c":
 			return m, tea.Quit
 		}
 		// State-specific updates
@@ -495,7 +517,14 @@ func updateListSelection(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 				m.generationSeconds = 0
 				m.status = "Generating..."
 				parsed := parseVocabBlock(m.inputs[inputIdx].Value())
+				// Shuffle the parsed list to diagnose potential API truncation
+				rand.Seed(time.Now().UnixNano())
+				rand.Shuffle(len(parsed), func(i, j int) {
+					parsed[i], parsed[j] = parsed[j], parsed[i]
+				})
 				system, user := buildPrompts(parsed, m.selectedQType, 1)
+				m.logBuffer.WriteString(fmt.Sprintf("PROMPT_SYSTEM: %s\n", system))
+				m.logBuffer.WriteString(fmt.Sprintf("PROMPT_USER: %s\n", user))
 				return m, tea.Batch(generateCmd(m.apiKey, m.selectedModel, system, user), startGenerationTickerCmd())
 			}
 		}
@@ -521,7 +550,14 @@ func updateNumInput(msg tea.KeyMsg, m *model) (tea.Model, tea.Cmd) {
 		m.status = "Generating..."
 		num, _ := strconv.Atoi(m.numSentences)
 		parsed := parseVocabBlock(m.inputs[inputIdx].Value())
+		// Shuffle the parsed list to diagnose potential API truncation
+		rand.Seed(time.Now().UnixNano())
+		rand.Shuffle(len(parsed), func(i, j int) {
+			parsed[i], parsed[j] = parsed[j], parsed[i]
+		})
 		system, user := buildPrompts(parsed, m.selectedQType, num)
+		m.logBuffer.WriteString(fmt.Sprintf("PROMPT_SYSTEM: %s\n", system))
+		m.logBuffer.WriteString(fmt.Sprintf("PROMPT_USER: %s\n", user))
 		return m, tea.Batch(generateCmd(m.apiKey, m.selectedModel, system, user), startGenerationTickerCmd())
 	case "esc":
 		m.isGenerating = false
